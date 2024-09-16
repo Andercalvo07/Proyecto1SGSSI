@@ -41,7 +41,7 @@ CREATE TABLE `coches` (
 
 INSERT INTO `coches` (`matricula`, `marca`, `color`, `kilometros`, `electrico`) VALUES
 ('1234ABC', 'kia', 'azul', 123454333, FALSE),
-('3563DBF', 'seat', 'negro', 199933, FALSE),
+('3563DBF', 'seat', 'negro', 199933, FALSE)
 
 --
 -- Índices para tablas volcadas
