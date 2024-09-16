@@ -24,31 +24,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Estructura de tabla para la tabla `coches`
 --
 
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `nombre` text NOT NULL
+CREATE TABLE `coches` (
+  `matricula` VARCHAR(7) NOT NULL,
+  `marca` text NOT NULL,
+  `color` text NOT NULL,
+  `kilometros` int NOT NULL,
+  `electrico` BOOL NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`) VALUES
-(1, 'mikel'),
-(2, 'aitor');
+INSERT INTO `coches` (`matricula`, `marca`, `color`, `kilometros`, `electrico`) VALUES
+('1234ABC', 'kia', 'azul', 123454333, FALSE),
+('3563DBF', 'seat', 'negro', 199933, FALSE),
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `usuarios`
+-- Indices de la tabla `coches`
 --
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `coches`
+  ADD PRIMARY KEY (`matricula`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
