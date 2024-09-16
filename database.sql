@@ -40,7 +40,7 @@ CREATE TABLE `coches` (
 
 INSERT INTO `coches` (`matricula`, `marca`, `color`, `kilometros`) VALUES
 ('1234ABC', 'kia', 'azul', 123454333),
-('3563DBF', 'seat', 'negro', 199933)
+('3563DBF', 'seat', 'negro', 199933);
 
 --
 -- Índices para tablas volcadas
@@ -49,8 +49,7 @@ INSERT INTO `coches` (`matricula`, `marca`, `color`, `kilometros`) VALUES
 --
 -- Indices de la tabla `coches`
 --
-ALTER TABLE `coches`
-  ADD PRIMARY KEY (`matricula`);
+ALTER TABLE `coches` ADD PRIMARY KEY (`matricula`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
