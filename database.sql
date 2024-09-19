@@ -39,7 +39,7 @@ CREATE TABLE `coches` (
 --
 
 INSERT INTO `coches` (`matricula`, `marca`, `color`, `kilometros`) VALUES
-('1234ABC', 'kia', 'azul', 123454333),
+('1234ABC', 'kiaaaaaaaaaaaaa', 'azul', 123454333),
 ('3563DBF', 'seat', 'negro', 199933);
 
 --
