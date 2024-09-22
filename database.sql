@@ -34,6 +34,13 @@ CREATE TABLE `coches` (
   `kilometros` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `usuarios` (
+  `NombreApellidos` text NOT NULL,
+  `DNI` VARCHAR(9) NOT NULL,
+  `telefono` VARCHAR(9) NOT NULL,
+  `fechaNcto` VARCHAR(10) NOT NULL,`email`VARCHAR(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Volcado de datos para la tabla `usuarios`
 --
