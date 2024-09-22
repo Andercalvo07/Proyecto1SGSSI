@@ -47,8 +47,7 @@ CREATE TABLE `usuarios` (
                                      MOD(CONVERT(SUBSTRING(DNI, 1, 8), UNSIGNED), 23) + 1, 1) = SUBSTRING(DNI, 10, 1)),
   CONSTRAINT chk_telefono CHECK (telefono REGEXP '^[0-9]{9}$'),
   CONSTRAINT chk_fechaNcto CHECK (fechaNcto REGEXP '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'),
-  CONSTRAINT chk_email CHECK (email REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$'),
-  PRIMARY KEY (`DNI`)
+  CONSTRAINT chk_email CHECK (email REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$')
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
