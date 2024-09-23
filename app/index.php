@@ -23,6 +23,7 @@ while ($row = mysqli_fetch_array($query)) {
     <td>{$row['marca']}</td>
     <td>{$row['color']}</td>
     <td>{$row['kilometros']}</td>
+	<td>{$row['fechaCompra']}</td>
    </tr>";
    
 
