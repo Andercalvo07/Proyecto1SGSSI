@@ -6,12 +6,15 @@
 </head>
 <body>
     <h1>Registro</h1>
-    <form id="register_form" action="register.php" method="post">
+    <form id="register_form">
         <label for="username">Nombre de Usuario:</label>
-        <input type="text" id="username" name="username" required>
+        <input type="text" id="username" name="username" required><br>
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required>
-        <button id="register_submit" type="submit">Registrarse</button>
+        <input type="password" id="password" name="password" required><br>
+        <label for="mail">Gmail con formato... (FALTAN DNI, NOMBRE APELLIDOS...):</label>
+        <input type="text" id="mail" name="mail" required><br>
+        <button id="register_submit" type="button" onclick="comprobarFormato()">Registrarse</button>
     </form>
+    <script src="comprobaciones.js"></script>
 </body>
 </html>
