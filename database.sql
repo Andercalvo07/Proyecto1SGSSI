@@ -40,7 +40,7 @@ CREATE TABLE `coches` (
   `matricula` VARCHAR(7) NOT NULL,
   `marca` text NOT NULL,
   `color` text NOT NULL,
-  `kilometros` int NOT NULL
+  `kilometros` int NOT NULL,`fechaCompra` DATE NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `usuarios` (
@@ -63,9 +63,9 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `coches` (`matricula`, `marca`, `color`, `kilometros`) VALUES
-('1234ABC', 'kiaaaaaaaaaaaaa', 'azul', 123454333),
-('3563DBF', 'seatttttt', 'negro', 199933);
+INSERT INTO `coches` (`matricula`, `marca`, `color`, `kilometros`,`fechaCompra`) VALUES
+('1234ABC', 'kia', 'azul', 123454333,'1999-08-23'),
+('3563DBF', 'seat', 'negro', 199933,'2021-03-02');
 
 --
 -- Índices para tablas volcadas
