@@ -27,7 +27,6 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `coches`
 --
 
-
 CREATE TABLE `members` (
   `nombre` text NOT NULL,
   `apellidos` text NOT NULL,
