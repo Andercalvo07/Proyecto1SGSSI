@@ -55,8 +55,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `coches` (`matricula`, `marca`, `color`, `kilometros`,`fechaCompra`) VALUES
-('1234ABC', 'kia', 'azul', 123454333,'1999-08-23'),
-('3563DBF', 'seat', 'negro', 199933,'2021-03-02');
+('1234BBC', 'kia miraz 5.7L V8', 'azul', 123454333,'1999-08-23'),
+('3563DBF', 'seat grandes 1.2 TSI', 'negro', 199933,'2021-03-02');
 
 --
 -- Índices para tablas volcadas

@@ -89,10 +89,10 @@
         <?php
         include 'db.php';  // Conectar a la base de datos
 
-        $query = mysqli_query($conn, "SELECT * FROM items");  // Asumiendo que existe una tabla de items
+        $query = mysqli_query($conn, "SELECT * FROM coches");  // Asumiendo que existe una tabla de items
 
         while ($row = mysqli_fetch_assoc($query)) {
-            echo "<p><strong>{$row['itemName']}</strong> - 
+            echo "<p><strong>{$row['marca']}</strong> - 
             <span class='item-links'>
                 <a href='show_item.php?item={$row['itemID']}'>Ver</a>
                 <a href='modify_item.php?item={$row['itemID']}'>Modificar</a>
