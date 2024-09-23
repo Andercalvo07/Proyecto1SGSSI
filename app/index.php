@@ -1,32 +1,17 @@
-<?php
-  echo '<h1>Yeah, it works!<h1>';
-  // phpinfo();
-  $hostname = "db";
-  $username = "admin";
-  $password = "test";
-  $db = "database";
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Página de coches</h1>
+    <h1>somos unos cracks</h1>
 
-  $conn = mysqli_connect($hostname,$username,$password,$db);
-  if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
-  }
-
-
-
-$query = mysqli_query($conn, "SELECT * FROM coches")
-   or die (mysqli_error($conn));
-
-while ($row = mysqli_fetch_array($query)) {
-  echo
-   "<tr>
-    <td>{$row['matricula']}</td>
-    <td>{$row['marca']}</td>
-    <td>{$row['color']}</td>
-    <td>{$row['kilometros']}</td>
-	<td>{$row['fechaCompra']}</td>
-   </tr>";
-   
-
-}
-
-?>
+    <nav>
+        <a href="/register">Registro</a>
+        <a href="/login">Login</a>
+        <a href="/items">Items</a>
+    </nav>
+</body>
+</html>
