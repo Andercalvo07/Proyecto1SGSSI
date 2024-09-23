@@ -27,15 +27,6 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `coches`
 --
 
-CREATE TABLE `members` (
-  `nombre` text NOT NULL,
-  `apellidos` text NOT NULL,
-  `dni` varchar(9) NOT NULL,
-  `telefono` varchar(9) NOT NULL,
-  `fecha_ncto` date not null,
-  `email` text not null
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 CREATE TABLE `coches` (
   `matricula` VARCHAR(7) NOT NULL,
   `marca` text NOT NULL,
