@@ -35,13 +35,13 @@ CREATE TABLE `coches` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `usuarios` (
-  `NombreApellidos` TEXT NOT NULL,
-  `DNI` VARCHAR(9) NOT NULL,
+  `nombre_apellidos` TEXT NOT NULL,
+  `dni` VARCHAR(9) NOT NULL,
   `telefono` VARCHAR(9) NOT NULL,
-  `fechaNcto` DATE NOT NULL,
+  `fecha_nacimiento` DATE NOT NULL,
   `email` VARCHAR(55) NOT NULL,
-  `nombreUsuario` VARCHAR(25)  NOT NULL,
-  `contra`  VARCHAR(50) NOT NULL
+  `username` VARCHAR(25)  NOT NULL,
+  `password`  VARCHAR(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -61,7 +61,7 @@ INSERT INTO `coches` (`matricula`, `marca`, `color`, `kilometros`,`fechaCompra`)
 --
 ALTER TABLE `coches` ADD PRIMARY KEY (`matricula`);
 
-ALTER TABLE `usuarios` ADD PRIMARY KEY (`DNI`), ADD UNIQUE KEY (`nombreUsuario`);
+ALTER TABLE `usuarios` ADD PRIMARY KEY (`dni`), ADD UNIQUE KEY (`username`);
 COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

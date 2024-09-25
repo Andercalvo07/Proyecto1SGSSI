@@ -82,8 +82,8 @@
     <h1>Registro</h1>
 
     <div class="container">
-	<form id="register_form" action="register.php" method="post" onsubmit="return comprobarFormato();">
-            <label for="username">Nombre de Usuario:</label>
+	<form id="register_form" action="register.php" method="POST">
+            <label for="username">Nombree de Usuario:</label>
             <input type="text" id="username" name="username" placeholder="Ejemplo: Juan123" required>
 
             <label for="password">Contraseña:</label>
@@ -108,13 +108,59 @@
             <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
             <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
 
-            <button id="register_submit" type="submit">Registrarse</button>
+            <button id="register_submit" name="submit" type="submit">Registrarse</button>
         </form>
     </div>
 
     <footer>
         <p>&copy; 2024 Página de Coches. Todos los derechos reservados.</p>
     </footer>
+    
+    <?php
+	// Conexión a la base de datos
+	$servername = "db";
+	$username = "admin";  // Cambiar por tu usuario de MySQL
+	$password = "test";      // Cambiar por tu contraseña de MySQL
+	$dbname = "database";  // Nombre de tu base de datos
+
+	// Crear conexión
+	$conn = new mysqli($servername, $username, $password, $dbname);
+
+	// Verificar conexión
+	if ($conn->connect_error) {
+	    die("Conexión fallida: " . $conn->connect_error);
+	}
+
+	// Verificar si el botón ha sido presionado
+	if (isset($_POST['submit'])) {
+	    // Obtener datos del formulario
+	    $username = $_POST['username'];
+	    $nombre_apellidos = $_POST['nombre_apellidos'];
+	    $email = $_POST['email'];
+	    $password = $_POST['password']; // Encriptar la contraseña
+	    $dni = $_POST['dni'];
+	    $telefono = $_POST['telefono'];
+	    $fecha_nacimiento = $_POST['fecha_nacimiento']; // Encriptar la contraseña
+	    // Preparar la consulta SQL
+
+	    $sql = "INSERT INTO usuarios (nombre_apellidos, dni, telefono, fecha_nacimiento, email, username, password) 
+            VALUES ('$nombre_apellidos', '$dni', '$telefono', '$fecha_nacimiento', '$email', '$username', '$password')";
+
+	    // Ejecutar la consulta
+	    if ($conn->query($sql) === TRUE) {
+		echo "Registro exitoso.";
+	    } else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
+	    }
+
+	    // Cerrar la declaración
+	    $stmt->close();
+	}
+
+	// Cerrar la conexión
+	$conn->close();
+	?>
+
 </body>
 </html>
 
