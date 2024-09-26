@@ -1,4 +1,3 @@
-//EN ESTE ARCHIVO SE CONFIGURA LA CONEXIÓN A LA BD QUE USAMOS
 <?php
 $hostname = "db";
 $username = "admin";

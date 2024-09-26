@@ -92,7 +92,7 @@
         $query = mysqli_query($conn, "SELECT * FROM coches");  // Asumiendo que existe una tabla de items
 
         while ($row = mysqli_fetch_assoc($query)) {
-            echo "<p><strong>{$row['marca']}</strong> - 
+            echo "<p><strong>{$row['marca_modelo']}</strong> - 
             <span class='item-links'>
                 <a href='show_item.php?item={$row['itemID']}'>Ver</a>
                 <a href='modify_item.php?item={$row['itemID']}'>Modificar</a>

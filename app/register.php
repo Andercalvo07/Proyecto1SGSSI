@@ -77,13 +77,14 @@
             color: #777;
         }
     </style>
+    <script src="comprobaciones.js" defer></script>
 </head>
 <body>
     <h1>Registro</h1>
 
     <div class="container">
-	<form id="register_form" action="register.php" method="POST">
-            <label for="username">Nombree de Usuario:</label>
+	<form id="register_form" action="register.php" method="POST" onsubmit="return validarFormulario();">
+            <label for="username">Nombre de Usuario:</label>
             <input type="text" id="username" name="username" placeholder="Ejemplo: Juan123" required>
 
             <label for="password">Contraseña:</label>
@@ -136,11 +137,11 @@
 	    // Obtener datos del formulario
 	    $username = $_POST['username'];
 	    $nombre_apellidos = $_POST['nombre_apellidos'];
-	    $email = $_POST['email'];
-	    $password = $_POST['password']; // Encriptar la contraseña
+	    $email = $_POST['mail'];
+	    $password = $_POST['password']; 
 	    $dni = $_POST['dni'];
 	    $telefono = $_POST['telefono'];
-	    $fecha_nacimiento = $_POST['fecha_nacimiento']; // Encriptar la contraseña
+	    $fecha_nacimiento = $_POST['fecha_nacimiento']; 
 	    // Preparar la consulta SQL
 
 	    $sql = "INSERT INTO usuarios (nombre_apellidos, dni, telefono, fecha_nacimiento, email, username, password) 
@@ -153,8 +154,6 @@
 		echo "Error: " . $sql . "<br>" . $conn->error;
 	    }
 
-	    // Cerrar la declaración
-	    $stmt->close();
 	}
 
 	// Cerrar la conexión
@@ -163,4 +162,3 @@
 
 </body>
 </html>
-

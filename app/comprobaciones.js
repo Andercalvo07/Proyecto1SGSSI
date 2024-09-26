@@ -47,6 +47,12 @@ function comprobarFormato() {
     return true;
 }
 
+// Función para validar el formulario antes de enviarlo
+function validarFormulario() {
+    return comprobarFormato(); // Llama a la función comprobarFormato
+}
+
+
 // Función para validar que la letra del DNI es correcta
 function validarLetraDNI(dni) {
     const numero = parseInt(dni.slice(0, 8), 10);
