@@ -28,10 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `coches` (
+  `marca_modelo` text NOT NULL,
   `matricula` VARCHAR(7) NOT NULL,
-  `marca` text NOT NULL,
   `color` text NOT NULL,
-  `kilometros` int NOT NULL,`fechaCompra` DATE NOT NULL
+  `kilometros` int NOT NULL,
+  `CV` int NOT NULL,
+  `año` int NOT NULL
+
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `usuarios` (
@@ -48,9 +52,9 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `coches` (`matricula`, `marca`, `color`, `kilometros`,`fechaCompra`) VALUES
-('1234BBC', 'kia miraz 5.7L V8', 'azul', 123454333,'1999-08-23'),
-('3563DBF', 'seat grandes 1.2 TSI', 'negro', 199933,'2021-03-02');
+INSERT INTO `coches` (`matricula`, `marca_modelo`, `color`, `kilometros`,`CV`,`año`) VALUES
+('1234BBC', 'kia miraz 5.7L V8', 'azul', 123454333,140,'2013'),
+('3563DBF', 'seat grandes 1.2 TSI', 'negro', 199933,130,'2001');
 
 --
 -- Índices para tablas volcadas
