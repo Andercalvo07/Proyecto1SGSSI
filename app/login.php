@@ -1,3 +1,39 @@
+<?php
+// Incluir el archivo de conexión a la base de datos
+include('db.php');
+
+// Inicializar variable en caso de que haya un error
+$error = "";
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Obtener el nombre de usuario y la contraseña desde el formulario
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = $_POST['password'];
+
+    // Consulta SQL para buscar al usuario
+    $sql = "SELECT username, password FROM usuarios WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql);
+
+    // Verificar si el usuario existe
+    if (mysqli_num_rows($result) > 0) {
+        // Obtener el registro del usuario (asi encontramos la contra buscando por el numero de fila)
+        $row = mysqli_fetch_assoc($result);
+        
+        // Verificar si la contraseña es correcta
+         if ($password == $row['password']) {         
+            //Inicio de sesión exitoso
+            header("Location: show_user.php?user=" . urlencode($username));
+        } else {
+            $error = "Contraseña incorrecta";
+        }
+    } else {
+        $error = "Usuario no encontrado";
+    }
+}
+
+// Cerrar la conexión a la base de datos
+mysqli_close($conn);
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -91,8 +127,15 @@
 
             <button id="login_submit" type="submit">Iniciar Sesión</button>
         </form>
+	<!-- Mostrar errores en caso de haberlos en ROJO -->
+        <?php if ($error): ?>
+            <p style="color: red;"><?php echo $error; ?></p>
+        <?php endif; ?>
     </div>
-
+	
+    <nav>
+        <a href="index.php">Inicio</a>
+    </nav>
     <footer>
         <p>&copy; 2024 Página de Coches. Todos los derechos reservados.</p>
     </footer>

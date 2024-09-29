@@ -10,13 +10,17 @@
     include 'db.php';  // Conectar a la base de datos
 
     $item = $_GET['item'];
-    $query = mysqli_query($conn, "SELECT * FROM items WHERE itemID='$item'");
+    $query = mysqli_query($conn, "SELECT * FROM coches WHERE matricula='$item'");
 
     if ($row = mysqli_fetch_assoc($query)) {
-        echo "<p>Nombre: {$row['itemName']}</p>";
-        // Añade más campos si es necesario
+        echo "<p>Nombre: {$row['marca_modelo']}</p>";
+        echo "<p>Nombre: {$row['matricula']}</p>";
+        echo "<p>Nombre: {$row['color']}</p>";
+        echo "<p>Nombre: {$row['kilometros']}</p>";
+        echo "<p>Nombre: {$row['CV']}</p>";
+         echo "<p>Nombre: {$row['año']}</p>";
     } else {
-        echo "<p>Item no encontrado.</p>";
+        echo "<p>Coche no encontrado.</p>";
     }
     ?>
 </body>

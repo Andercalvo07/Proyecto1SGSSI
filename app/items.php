@@ -92,11 +92,11 @@
         $query = mysqli_query($conn, "SELECT * FROM coches");  // Asumiendo que existe una tabla de items
 
         while ($row = mysqli_fetch_assoc($query)) {
-            echo "<p><strong>{$row['marca_modelo']}</strong> - 
+            echo "<p><strong>{$row['matricula']}</strong> - 
             <span class='item-links'>
-                <a href='show_item.php?item={$row['marca_modelo']}'>Ver</a>
-                <a href='modify_item.php?item={$row['marca_modelo']}'>Modificar</a>
-                <a href='delete_item.php?item={$row['marca_modelo']}'>Eliminar</a>
+                <a href='show_item.php?item={$row['matricula']}'>Ver</a>
+                <a href='modify_item.php?item={$row['matricula']}'>Modificar</a>
+                <a href='delete_item.php?item={$row['matricula']}'>Eliminar</a>
             </span></p>";
         }
         ?>

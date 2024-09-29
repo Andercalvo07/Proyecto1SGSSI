@@ -11,13 +11,13 @@
         include 'db.php';  // Conectar a la base de datos
 
         $item = $_GET['item'];
-        $query = mysqli_query($conn, "SELECT * FROM items WHERE itemID='$item'");
+        $query = mysqli_query($conn, "SELECT * FROM coches WHERE matricula='$item'");
         $row = mysqli_fetch_assoc($query);
 
         if ($row) {
-            echo '<label for="item_name">Nombre del Item:</label>';
-            echo '<input type="text" id="item_name" name="item_name" value="' . $row['itemName'] . '" required>';
-            echo '<input type="hidden" name="itemID" value="' . $item . '">';
+            echo '<label for="item_name">Marca_modelo:</label>';
+            echo '<input type="text" id="item_name" name="item_name" value="' . $row['marca_modelo'] . '" required>';
+            echo '<input type="hidden" name="matricula" value="' . $item . '">';
         }
         ?>
         <button id="item_modify_submit" type="submit">Guardar Cambios</button>

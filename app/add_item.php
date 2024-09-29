@@ -139,7 +139,11 @@
 	    if ($conn->query($sql) === TRUE) {
 		echo "Vehiculo añadido correctamente.";
 	    } else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
+		if ($conn->errno === 1062) { // 1062 es el código de error para duplicados
+        echo "La matricula ya está registrada, prueba con otra.";
+    } else {
+        echo "OTRO ERROR";
+    }
 	    }
 
 	    // Cerrar la declaración

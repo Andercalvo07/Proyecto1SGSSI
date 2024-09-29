@@ -61,3 +61,10 @@ function validarLetraDNI(dni) {
     const letraCorrecta = letras[numero % 23];
     return letra === letraCorrecta;
 }
+
+
+function mostrarAlerta(mensaje) {
+    alert(mensaje);
+}
+
+

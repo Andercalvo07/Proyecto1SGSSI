@@ -112,7 +112,11 @@
             <button id="register_submit" name="submit" type="submit">Registrarse</button>
         </form>
     </div>
-
+	
+    <nav>
+        <a href="index.php">Inicio</a>
+    </nav>
+	
     <footer>
         <p>&copy; 2024 Página de Coches. Todos los derechos reservados.</p>
     </footer>
@@ -148,11 +152,18 @@
             VALUES ('$nombre_apellidos', '$dni', '$telefono', '$fecha_nacimiento', '$email', '$username', '$password')";
 
 	    // Ejecutar la consulta
-	    if ($conn->query($sql) === TRUE) {
-		echo "Registro exitoso.";
-	    } else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
-	    }
+	    
+if ($conn->query($sql) === TRUE) {
+    echo "BIENNNNNN";
+} else {
+    // Manejo de errores
+    if ($conn->errno === 1062) { // 1062 es el código de error para duplicados
+        echo "El DNI o el username ya está registrado, prueba con otro.";
+    } else {
+        echo "OTRO ERROR";
+    }
+}
+
 
 	}
 
