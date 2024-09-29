@@ -94,9 +94,9 @@
         while ($row = mysqli_fetch_assoc($query)) {
             echo "<p><strong>{$row['marca_modelo']}</strong> - 
             <span class='item-links'>
-                <a href='show_item.php?item={$row['itemID']}'>Ver</a>
-                <a href='modify_item.php?item={$row['itemID']}'>Modificar</a>
-                <a href='delete_item.php?item={$row['itemID']}'>Eliminar</a>
+                <a href='show_item.php?item={$row['marca_modelo']}'>Ver</a>
+                <a href='modify_item.php?item={$row['marca_modelo']}'>Modificar</a>
+                <a href='delete_item.php?item={$row['marca_modelo']}'>Eliminar</a>
             </span></p>";
         }
         ?>
