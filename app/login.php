@@ -112,6 +112,26 @@ mysqli_close($conn);
             margin: 0;
             color: #777;
         }
+        nav {
+            text-align: center;
+            background-color: #f8f9fa;
+            padding: 15px 0;
+            border-top: 2px solid #ddd;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            background-color: #0069d9;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -137,7 +157,7 @@ mysqli_close($conn);
         <a href="index.php">Inicio</a>
     </nav>
     <footer>
-        <p>&copy; 2024 Página de Coches. Todos los derechos reservados.</p>
+        <p>&copy; Ander-Iker-Jon-Andoni-Mikel-Asier </p>
     </footer>
 </body>
 </html>

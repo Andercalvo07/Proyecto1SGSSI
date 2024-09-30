@@ -65,6 +65,28 @@
             background-color: #218838;
         }
 
+        /* Estilos para el menú de navegación */
+        nav {
+            text-align: center;
+            background-color: #f8f9fa;
+            padding: 15px 0;
+            border-top: 2px solid #ddd;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            background-color: #0069d9;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #0056b3;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -78,6 +100,7 @@
             color: #777;
         }
     </style>
+
 </head>
 <body>
     <h1>Gestión de Items</h1>
@@ -89,10 +112,10 @@
         <?php
         include 'db.php';  // Conectar a la base de datos
 
-        $query = mysqli_query($conn, "SELECT * FROM coches");  // Asumiendo que existe una tabla de items
+        $query = mysqli_query($conn, "SELECT * FROM coches");  // Asumiendo que existe una tabla de coches
 
         while ($row = mysqli_fetch_assoc($query)) {
-            echo "<p><strong>{$row['matricula']}</strong> - 
+            echo "<p>Matricula:  <strong>{$row['matricula']}</strong> - Marca_modelo: <strong>{$row['marca_modelo']}</strong>
             <span class='item-links'>
                 <a href='show_item.php?item={$row['matricula']}'>Ver</a>
                 <a href='modify_item.php?item={$row['matricula']}&model={$row['marca_modelo']}'>Modificar</a>
@@ -102,12 +125,14 @@
         ?>
     </div>
     
+    <!-- Menú de navegación -->
     <nav>
         <a href="index.php">Inicio</a>
         <a href="register.php">Registro</a>
         <a href="login.php">Login</a>
     </nav>
 
+<!-- Footer -->
     <footer>
         <p>&copy; 2024 Gestión de Items</p>
     </footer>

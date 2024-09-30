@@ -64,9 +64,6 @@
 </head>
 <body>
     <h1>Página de Coches</h1>
-    <div class="content">
-        <h1>ikerlo gei</h1>
-    </div>
 
     <nav>
         <a href="register.php">Registro</a>

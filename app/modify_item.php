@@ -97,8 +97,27 @@
         $row = mysqli_fetch_assoc($query);
 
         if ($row) {
-            echo '<label for="item_name">Marca_modelo:</label>';
-            echo '<input type="text" id="item_name" name="item_name" value="' . $row['marca_modelo'] . '" required>';
+            echo 'Modificar coche con matricula: ' . $item . '<br>';
+        
+            //cxreamos el formulario para cambiar datos
+        echo '<label for="nMatricula">Nueva matricula:</label>';
+	echo '<input type="text" id="nMatricula" name="nMatricula" value="' . $row['matricula'] . '" required><br>';    
+            
+        echo '<label for="marcamodelo">Marca_modelo:</label>';
+	echo '<input type="text" id="marcamodelo" name="marcamodelo" value="' . $row['marca_modelo'] . '" required><br>';
+
+	echo '<label for="color">Color:</label>';
+	echo '<input type="text" id="color" name="color" value="' . $row['color'] . '" required><br>';
+
+	echo '<label for="kms">Kilometros:</label>';
+	echo '<input type="text" id="kms" name="kms" value="' . $row['kilometros'] . '" required><br>';
+
+	echo '<label for="cv">Caballos:</label>';
+	echo '<input type="text" id="cv" name="cv" value="' . $row['CV'] . '" required><br>';
+
+	echo '<label for="anio">Año:</label>';
+	echo '<input type="text" id="anio" name="anio" value="' . $row['año'] . '" required><br>';
+            
             echo '<input type="hidden" name="matricula" value="' . $item . '">';
         }
         ?>
@@ -113,10 +132,15 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	    // Obtén los valores del formulario
 	    $matricula = $_POST['matricula'];
-	    $item_name = $_POST['item_name'];
+	    $nMatricula =  $_POST['nMatricula'];
+	    $marcamodelo = $_POST['marcamodelo'];
+	    $color = $_POST['color'];
+	    $kms = $_POST['kms'];
+	    $cv = $_POST['cv'];
+	    $anio = $_POST['anio'];
 
 	    // Ejecuta la consulta de actualización
-	    $query = "UPDATE coches SET marca_modelo='$item_name' WHERE matricula='$matricula'";
+	    $query = "UPDATE coches SET matricula='$nMatricula', marca_modelo='$marcamodelo', color='$color', kilometros='$kms', CV='$cv', año='$anio' WHERE matricula='$matricula'";
 	    $result = mysqli_query($conn, $query);
 
 	    if ($result) {
@@ -124,9 +148,17 @@
 		echo "Los cambios se han guardado exitosamente.";
 	    } else {
 		// Muestra un mensaje de error
-		echo "Error al guardar los cambios: " . mysqli_error($conn);
+		if ($conn->errno === 1062) { // 1062 es el código de error para duplicados
+       			 echo "La matricula ya está registrada, prueba con otra.";
+    		} else {
+        		echo "OTRO ERROR";
+    		}
+		
+		
 	    }
 	}
+	
+	echo"<a href='items.php'>Volver</a>";
 
 // Cerrar la conexión
 mysqli_close($conn);
