@@ -95,7 +95,7 @@
             echo "<p><strong>{$row['matricula']}</strong> - 
             <span class='item-links'>
                 <a href='show_item.php?item={$row['matricula']}'>Ver</a>
-                <a href='modify_item.php?item={$row['matricula']}'>Modificar</a>
+                <a href='modify_item.php?item={$row['matricula']}&model={$row['marca_modelo']}'>Modificar</a>
                 <a href='delete_item.php?item={$row['matricula']}'>Eliminar</a>
             </span></p>";
         }
