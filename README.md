@@ -16,7 +16,7 @@
 - Configuracion e instalacion de docker
 - Configuracion en github de las claves SSH mediante key-gen para no tener que descargar mediante el enlace http...
 
-# Docker LAMP
+## Docker LAMP
 Linux + Apache + MariaDB (MySQL) + PHP 7.2 on Docker Compose. Mod_rewrite enabled by default.
 
 ## Instrucciones
