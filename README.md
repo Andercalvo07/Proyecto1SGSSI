@@ -2,26 +2,29 @@
 
 ## Integrantes del Grupo
 
-- Jon Miraz Amorrortu
-- Ander Calvo Asensio
-- Asier Grandes Orons
-- Mikel Herranz ...
-- Andoni Castellanos ...
-- Iker López Aldonza
+- [Jon Miraz Amorrortu](https://github.com/jonmi2)
+- [Ander Calvo Asensio](https://github.com/Andercalvo07)
+- [Asier Grandes Orons](https://github.com/asiergrandes)
+- [Mikel Herranz ...](https://github.com/Mikel-Herranz)
+- [Andoni Castellanos ...](https://github.com/andokas)
+- [Iker López Aldonza](https://github.com/NotGayo)
 
 ## Despliegue del Proyecto con Docker
 
 ### Requisitos previos:
 
 - Configuracion e instalacion de docker
-- Configuracion en github de las claves SSH para no tener que descargar mediante el enlace http...
+- Configuracion en github de las claves SSH mediante key-gen para no tener que descargar mediante el enlace http...
+
 # Docker LAMP
 Linux + Apache + MariaDB (MySQL) + PHP 7.2 on Docker Compose. Mod_rewrite enabled by default.
 
-## Instructions
+## Instrucciones
+
 ### 1. Bajar el repositorio en su ultima version
 $ git clone git@github.com:jonmi2/Proyecto1SGSSI.git entrega_1
 $ git checkout entrega_1
+$ git pull git@github.com:jonmi2/Proyecto1SGSSI.git entrega_1
 
 ### 2. Dentro de la carpeta de proyecto construimos la imagen una unica vez
 $ docker build -t="web" .
