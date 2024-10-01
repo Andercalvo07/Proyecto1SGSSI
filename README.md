@@ -22,9 +22,9 @@ Linux + Apache + MariaDB (MySQL) + PHP 7.2 on Docker Compose. Mod_rewrite enable
 ## Instrucciones
 
 ### 1. Bajar el repositorio en su ultima version
-$ git clone git@github.com:jonmi2/Proyecto1SGSSI.git entrega_1
-$ git checkout entrega_1
-$ git pull git@github.com:jonmi2/Proyecto1SGSSI.git entrega_1
+- $ git clone git@github.com:jonmi2/Proyecto1SGSSI.git entrega_1
+- $ git checkout entrega_1
+- $ git pull git@github.com:jonmi2/Proyecto1SGSSI.git entrega_1
 
 ### 2. Dentro de la carpeta de proyecto construimos la imagen una unica vez
 $ docker build -t="web" .
