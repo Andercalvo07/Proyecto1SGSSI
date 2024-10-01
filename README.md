@@ -5,8 +5,8 @@
 - [Jon Miraz Amorrortu](https://github.com/jonmi2)
 - [Ander Calvo Asensio](https://github.com/Andercalvo07)
 - [Asier Grandes Orons](https://github.com/asiergrandes)
-- [Mikel Herranz ...](https://github.com/Mikel-Herranz)
-- [Andoni Castellanos ...](https://github.com/andokas)
+- [Mikel Herranz Rodriguez](https://github.com/Mikel-Herranz)
+- [Andoni Castellanos Diaz](https://github.com/andokas)
 - [Iker López Aldonza](https://github.com/NotGayo)
 
 ## Despliegue del Proyecto con Docker
@@ -27,13 +27,12 @@ Linux + Apache + MariaDB (MySQL) + PHP 7.2 on Docker Compose. Mod_rewrite enable
 - $ git pull git@github.com:jonmi2/Proyecto1SGSSI.git entrega_1
 
 ### 2. Dentro de la carpeta de proyecto construimos la imagen una unica vez
-$ docker build -t="web" .
+- $ docker build -t="web" .
 
 ### 3. Una vez construido desplegamos
-$ docker-compose up
+- $ docker-compose up
 
 ### 4. Accedemos a phpMyAdmin e importamos la database.sql del proyecto
-
 - [phpMyAdmin](http://localhost:8890/)
 
 - Nos registramos con:
@@ -45,3 +44,7 @@ $ docker-compose up
 ### 5. Accedemos a la vista de la pagina en el puerto 81
 
 - [CONCESIONARIO](http://localhost:81/)
+
+### 6. Para terminar con la pagina y los servicios
+
+- $ docker-compose down
