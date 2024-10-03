@@ -76,6 +76,7 @@
             color: #777;
         }
         </style>
+        <script src="comprobaciones.js" ></script>
 </head>
 <body>
     <h1>Agregar Nuevo Coche</h1>
@@ -137,12 +138,12 @@
 
 	    // Ejecutar la consulta
 	    if ($conn->query($sql) === TRUE) {
-		echo "Vehiculo añadido correctamente.";
+		 echo "<script>mostrarAlerta('Vehiculo añadido correctamente');</script>";
 	    } else {
 		if ($conn->errno === 1062) { // 1062 es el código de error para duplicados
-        echo "La matricula ya está registrada, prueba con otra.";
+         echo "<script>mostrarAlerta('La matricula ya estaba registrada, prueba con otra');</script>";
     } else {
-        echo "OTRO ERROR";
+        echo "<script>mostrarAlerta(' error, vuelve a probar con otros datos');</script>";
     }
 	    }
 
