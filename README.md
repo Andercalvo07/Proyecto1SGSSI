@@ -22,9 +22,9 @@ Linux + Apache + MariaDB (MySQL) + PHP 7.2 on Docker Compose. Mod_rewrite enable
 ## Instrucciones
 
 ### 1. Bajar el repositorio en su ultima version
-- $ git clone git@github.com:jonmi2/Proyecto1SGSSI.git entrega_1
-- $ git checkout entrega_1
-- $ git pull git@github.com:jonmi2/Proyecto1SGSSI.git entrega_1
+- Crear el repositorio del proyecto en GitHub usando como base https://github.com/mikel-egana-aranguren/docker-lamp (o pulsando el botón llamado fork que aparece en el link anterior)
+- $ git clone url_del_repositorio_que_se_ha_creado_en_el_paso_anterior (para clonar el repositorio en tu ordenador)
+- $ cd directorio_del_proyecto
 
 ### 2. Dentro de la carpeta de proyecto construimos la imagen una unica vez
 - $ docker build -t="web" .
