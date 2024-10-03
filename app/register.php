@@ -97,7 +97,7 @@
             background-color: #0056b3;
         }
     </style>
-    <script src="comprobaciones.js" defer></script>
+    <script src="comprobaciones.js" ></script>
 </head>
 <body>
     <h1>Registro</h1>
@@ -174,13 +174,13 @@
 	    // Ejecutar la consulta
 	    
 if ($conn->query($sql) === TRUE) {
-    echo "BIENNNNNN";
+    echo "<script>mostrarAlerta('BIENNNNNN');</script>"; // Llamada a la función JavaScript
 } else {
     // Manejo de errores
     if ($conn->errno === 1062) { // 1062 es el código de error para duplicados
-        echo "El DNI o el username ya está registrado, prueba con otro.";
+        echo "<script>mostrarAlerta('El DNI o el username ya está registrado, prueba con otro.');</script>";
     } else {
-        echo "OTRO ERROR";
+        echo "<script>mostrarAlerta('OTRO ERROR');</script>";
     }
 }
 
