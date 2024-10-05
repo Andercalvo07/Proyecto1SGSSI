@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Agregar Item</title>
+    <title>Agregar Coche</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -75,90 +75,104 @@
             margin: 0;
             color: #777;
         }
-        </style>
-        <script src="comprobaciones.js" ></script>
+
+        nav {
+            text-align: center;
+            background-color: #f8f9fa;
+            padding: 15px 0;
+            border-top: 2px solid #ddd;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            background-color: #0069d9; /* Color del botón */
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #0056b3; /* Color del botón al pasar el ratón */
+        }
+    </style>
+    <script src="comprobaciones.js"></script>
 </head>
 <body>
-    <h1>Agregar Nuevo Coche</h1>
+    <h1>Agregar Coche</h1>
     <div class="container">
-    <form id="item_add_form" action="add_item.php" method="POST">
-            <label for="marca_modelo">Nombre de Coche:</label>
-            <input type="text" id="marca_modelo" name="marca_modelo" placeholder="Ejemplo: Seat Ibiza 1.9 TDI" required>
-
-            <label for="matricula">Matricula:</label>
-            <input type="text" id="matricula" name="matricula" placeholder="1234BBC" required>
-
-            <label for="color">Color:</label>
-            <input type="text" id="color" name="color" placeholder="Gris Perla Metalizado" required>
-
-            <!-- Campo para Nombre y Apellidos combinados -->
-            <label for="kilometros">Kilometros:</label>
-            <input type="text" id="kilometros" name="kilometros" placeholder="200000" required>
-
-            <!-- Campo para DNI -->
-            <label for="CV">CV:</label>
-            <input type="text" id="CV" name="CV" placeholder="160" required>
-            
-            <!-- Campo para DNI -->
-            <label for="año">Año:</label>
-            <input type="text" id="año" name="año" placeholder="2017" required>
-
-
-            <button id="item_add_submit" name="submit" type="submit">Añadir coche</button>
-        </form>
-        </div>
         <?php
-	// Conexión a la base de datos
-	$servername = "db";
-	$username = "admin";  // Cambiar por tu usuario de MySQL
-	$password = "test";      // Cambiar por tu contraseña de MySQL
-	$dbname = "database";  // Nombre de tu base de datos
+        include 'db.php';  // Conectar a la base de datos
 
-	// Crear conexión
-	$conn = new mysqli($servername, $username, $password, $dbname);
+        // Inicializar variables para el formulario
+        $nMatricula = '';
+        $marcamodelo = '';
+        $color = '';
+        $kms = '';
+        $cv = '';
+        $anio = '';
 
-	// Verificar conexión
-	if ($conn->connect_error) {
-	    die("Conexión fallida: " . $conn->connect_error);
-	}
+        $error_message = '';
 
-	// Verificar si el botón ha sido presionado
-	if (isset($_POST['submit'])) {
-	    // Obtener datos del formulario
-	    $marca_modelo = $_POST['marca_modelo'];
-	    $matricula = $_POST['matricula'];
-	    $color = $_POST['color'];
-	    $kilometros = $_POST['kilometros']; 
-	    $CV = $_POST['CV'];
-	    $año = $_POST['año'];
-	    // Preparar la consulta SQL
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Obtén los valores del formulario
+            $nMatricula = $_POST['nMatricula'];
+            $marcamodelo = $_POST['marcamodelo'];
+            $color = $_POST['color'];
+            $kms = $_POST['kms'];
+            $cv = $_POST['cv'];
+            $anio = $_POST['anio'];
 
-	    $sql = "INSERT INTO coches (marca_modelo, matricula, color, kilometros, CV, año) 
-            VALUES ('$marca_modelo', '$matricula', '$color', '$kilometros', '$CV', '$año')";
+            // Ejecuta la consulta de inserción
+            $query = "INSERT INTO coches (matricula, marca_modelo, color, kilometros, CV, año) VALUES ('$nMatricula', '$marcamodelo', '$color', '$kms', '$cv', '$anio')";
+            $result = mysqli_query($conn, $query);
 
-	    // Ejecutar la consulta
-	    if ($conn->query($sql) === TRUE) {
-		 echo "<script>mostrarAlerta('Vehiculo añadido correctamente');</script>";
-	    } else {
-		if ($conn->errno === 1062) { // 1062 es el código de error para duplicados
-         echo "<script>mostrarAlerta('La matricula ya estaba registrada, prueba con otra');</script>";
-    } else {
-        echo "<script>mostrarAlerta(' error, vuelve a probar con otros datos');</script>";
-    }
-	    }
+            if ($result) {
+                // Mensaje de éxito
+                echo "<script>mostrarAlerta('Coche agregado exitosamente');</script>";
+            } else {
+                // Muestra un mensaje de error
+                if ($conn->errno === 1062) {
+                    $error_message = 'La matrícula ya está registrada, prueba con otra.';
+                } else {
+                    $error_message = 'Error, prueba con otros datos.';
+                }
+            }
+        }
 
-	    // Cerrar la declaración
-	    if ($stmt) {
-	    $stmt->close();
-		}
+        // Mostrar mensaje de error si existe
+        if ($error_message) {
+            echo "<script>mostrarAlerta('$error_message');</script>";
+        }
 
-	}
+        // Formulario para agregar nuevos datos
+        echo '<form id="item_add_form" action="add_item.php" method="post">';
+        echo '<label for="nMatricula">Matrícula:</label>';
+        echo '<input type="text" id="nMatricula" name="nMatricula" value="' . htmlspecialchars($nMatricula) . '" required>';
+        echo '<label for="marcamodelo">Marca y modelo:</label>';
+        echo '<input type="text" id="marcamodelo" name="marcamodelo" value="' . htmlspecialchars($marcamodelo) . '" required>';
+        echo '<label for="color">Color:</label>';
+        echo '<input type="text" id="color" name="color" value="' . htmlspecialchars($color) . '" required>';
+        echo '<label for="kms">Kilómetros:</label>';
+        echo '<input type="text" id="kms" name="kms" value="' . htmlspecialchars($kms) . '" required>';
+        echo '<label for="cv">Caballos:</label>';
+        echo '<input type="text" id="cv" name="cv" value="' . htmlspecialchars($cv) . '" required>';
+        echo '<label for="anio">Año:</label>';
+        echo '<input type="text" id="anio" name="anio" value="' . htmlspecialchars($anio) . '" required>';
+        echo '<button id="item_add_submit" name="item_add_submit" type="submit">Agregar Coche</button>';
+        echo '</form>';
+        ?>
+    </div>
 
-	// Cerrar la conexión
-	$conn->close();
-	?>
- <nav>
-        <a href="index.php">Inicio</a>
+    <nav>
+        <a href="index.php">Inicio</a> <!-- Este es el botón que has solicitado cambiar -->
     </nav>
+
+    <footer>
+        <p>&copy; 2024 Página de Coches. Todos los derechos reservados.</p>
+    </footer>
+    
 </body>
 </html>
+
