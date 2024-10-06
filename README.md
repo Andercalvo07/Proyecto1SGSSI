@@ -48,4 +48,3 @@ Linux + Apache + MariaDB (MySQL) + PHP 7.2 on Docker Compose. Mod_rewrite enable
 ### 6. Para terminar con la pagina y los servicios
 
 - $ docker-compose down
-
