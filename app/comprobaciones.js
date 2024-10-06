@@ -64,7 +64,7 @@ function validarLetraDNI(dni) {
 
 
 function mostrarAlerta(mensaje) {
-    console.log("La función mostrarAlerta fue llamada con el mensaje: " + mensaje);
+    alert(mensaje);
 }
 
 
