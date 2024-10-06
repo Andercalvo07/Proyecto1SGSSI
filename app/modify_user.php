@@ -133,7 +133,7 @@
             
             if (mysqli_query($conn, $sql)) {
                 // Mostrar mensaje de éxito
-                echo "<script>mostrarAlerta('Datos actualizados correctamente.');</script>";
+                echo "<p style='color: green;'>Cambios guardados correctamente.</p>";
             } else {
                 if ($conn->errno === 1062) { // 1062 es el código de error para duplicados
                     $error_message = 'DNI ya está registrado, prueba con otro.';
@@ -157,7 +157,7 @@
         if ($row) {
             // Mostrar el mensaje de error si existe
             if ($error_message) {
-                echo "<script>mostrarAlerta('$error_message');</script>";
+                 echo "<p style='color: red;'>$error_message</p>";
             }
 
             // Formulario para modificar datos del usuario

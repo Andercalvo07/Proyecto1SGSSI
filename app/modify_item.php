@@ -136,7 +136,7 @@
 
             if ($result) {
                 // Mensaje de éxito
-                echo "<script>mostrarAlerta('Cambios guardados exitosamente');</script>";
+                 echo "<p style='color: green;'>Cambios guardados correctamente.</p>";
             } else {
                 // Muestra un mensaje de error
                 if ($conn->errno === 1062) { // 1062 es el código de error para duplicados
@@ -161,7 +161,7 @@
 
         // Mostrar mensaje de error si existe
         if ($error_message) {
-            echo "<script>mostrarAlerta('$error_message');</script>";
+            echo "<p style='color: red;'>$error_message</p>";
         }
 
         // Formulario para cambiar datos

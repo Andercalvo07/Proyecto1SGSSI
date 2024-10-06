@@ -64,6 +64,12 @@
             background-color: #218838;
         }
 
+        .mensaje {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -76,6 +82,7 @@
             margin: 0;
             color: #777;
         }
+
         nav {
             text-align: center;
             background-color: #f8f9fa;
@@ -97,13 +104,13 @@
             background-color: #0056b3;
         }
     </style>
-    <script src="comprobaciones.js" ></script>
+    <script src="comprobaciones.js"></script>
 </head>
 <body>
     <h1>Registro</h1>
 
     <div class="container">
-	<form id="register_form" action="register.php" method="POST" onsubmit="return validarFormulario();">
+        <form id="register_form" action="register.php" method="POST" onsubmit="return validarFormulario();">
             <label for="username">Nombre de Usuario:</label>
             <input type="text" id="username" name="username" placeholder="Ejemplo: Juan123" required>
 
@@ -113,83 +120,85 @@
             <label for="mail">Correo Electrónico:</label>
             <input type="email" id="mail" name="mail" placeholder="Ejemplo: nombre@servidor.com" required>
 
-            <!-- Campo para Nombre y Apellidos combinados -->
             <label for="nombre_apellidos">Nombre y Apellidos:</label>
             <input type="text" id="nombre_apellidos" name="nombre_apellidos" placeholder="Ejemplo: Juan Pérez Gómez" required>
 
-            <!-- Campo para DNI -->
             <label for="dni">DNI:</label>
             <input type="text" id="dni" name="dni" placeholder="Ejemplo: 12345678Z" required>
 
-            <!-- Campo para Teléfono -->
             <label for="telefono">Teléfono:</label>
             <input type="text" id="telefono" name="telefono" placeholder="Ejemplo: 600123456" required>
 
-            <!-- Campo para Fecha de Nacimiento -->
             <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
             <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
 
             <button id="register_submit" name="submit" type="submit">Registrarse</button>
         </form>
+
+        <!-- Contenedor para mostrar mensajes -->
+        <div id="mensaje" class="mensaje">
+            <?php
+            // Inicializar la variable de mensaje
+            $mensaje = '';
+
+            // Conexión a la base de datos
+            $servername = "db";
+            $username_db = "admin";  // Cambiar por tu usuario de MySQL
+            $password_db = "test";      // Cambiar por tu contraseña de MySQL
+            $dbname = "database";  // Nombre de tu base de datos
+
+            // Crear conexión
+            $conn = new mysqli($servername, $username_db, $password_db, $dbname);
+
+            // Verificar conexión
+            if ($conn->connect_error) {
+                die("Conexión fallida: " . $conn->connect_error);
+            }
+
+            // Verificar si el botón ha sido presionado
+            if (isset($_POST['submit'])) {
+                // Obtener datos del formulario
+                $username = $_POST['username'];
+                $nombre_apellidos = $_POST['nombre_apellidos'];
+                $email = $_POST['mail'];
+                $password = $_POST['password']; 
+                $dni = $_POST['dni'];
+                $telefono = $_POST['telefono'];
+                $fecha_nacimiento = $_POST['fecha_nacimiento']; 
+
+                // Preparar la consulta SQL
+                $sql = "INSERT INTO usuarios (nombre_apellidos, dni, telefono, fecha_nacimiento, email, username, password) 
+                        VALUES ('$nombre_apellidos', '$dni', '$telefono', '$fecha_nacimiento', '$email', '$username', '$password')";
+
+                // Ejecutar la consulta
+                if ($conn->query($sql) === TRUE) {
+                    $mensaje = "<span style='color: green;'>Registro exitoso.</span>"; // Mensaje de éxito
+                } else {
+                    // Manejo de errores
+                    if ($conn->errno === 1062) { // 1062 es el código de error para duplicados
+                        $mensaje = "<span style='color: red;'>El DNI o el nombre de usuario ya está registrado, prueba con otro.</span>";
+                    } else {
+                        $mensaje = "<span style='color: red;'>Error con el formato de los datos introducidos, prueba con otros.</span>";
+                    }
+                }
+            }
+
+            // Cerrar la conexión
+            $conn->close();
+
+            // Mostrar el mensaje
+            echo $mensaje;
+            ?>
+        </div>
     </div>
-	
+
     <nav>
         <a href="index.php">Inicio</a>
     </nav>
-	
+
     <footer>
         <p>&copy; 2024 Página de Coches. Todos los derechos reservados.</p>
     </footer>
-    
-    <?php
-	// Conexión a la base de datos
-	$servername = "db";
-	$username = "admin";  // Cambiar por tu usuario de MySQL
-	$password = "test";      // Cambiar por tu contraseña de MySQL
-	$dbname = "database";  // Nombre de tu base de datos
-
-	// Crear conexión
-	$conn = new mysqli($servername, $username, $password, $dbname);
-
-	// Verificar conexión
-	if ($conn->connect_error) {
-	    die("Conexión fallida: " . $conn->connect_error);
-	}
-
-	// Verificar si el botón ha sido presionado
-	if (isset($_POST['submit'])) {
-	    // Obtener datos del formulario
-	    $username = $_POST['username'];
-	    $nombre_apellidos = $_POST['nombre_apellidos'];
-	    $email = $_POST['mail'];
-	    $password = $_POST['password']; 
-	    $dni = $_POST['dni'];
-	    $telefono = $_POST['telefono'];
-	    $fecha_nacimiento = $_POST['fecha_nacimiento']; 
-	    // Preparar la consulta SQL
-
-	    $sql = "INSERT INTO usuarios (nombre_apellidos, dni, telefono, fecha_nacimiento, email, username, password) 
-            VALUES ('$nombre_apellidos', '$dni', '$telefono', '$fecha_nacimiento', '$email', '$username', '$password')";
-
-	    // Ejecutar la consulta
-	    
-if ($conn->query($sql) === TRUE) {
-    echo "<script>mostrarAlerta('BIENNNNNN');</script>"; // Llamada a la función JavaScript
-} else {
-    // Manejo de errores
-    if ($conn->errno === 1062) { // 1062 es el código de error para duplicados
-        echo "<script>mostrarAlerta('El DNI o el username ya está registrado, prueba con otro.');</script>";
-    } else {
-        echo "<script>mostrarAlerta('OTRO ERROR');</script>";
-    }
-}
-
-
-	}
-
-	// Cerrar la conexión
-	$conn->close();
-	?>
-
 </body>
 </html>
+

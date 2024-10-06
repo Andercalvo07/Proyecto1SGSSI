@@ -130,7 +130,7 @@
 
             if ($result) {
                 // Mensaje de éxito
-                echo "<script>mostrarAlerta('Coche agregado exitosamente');</script>";
+                 echo "<p style='color: green;'>Coche añadido correctamente.</p>";
             } else {
                 // Muestra un mensaje de error
                 if ($conn->errno === 1062) {
@@ -143,7 +143,7 @@
 
         // Mostrar mensaje de error si existe
         if ($error_message) {
-            echo "<script>mostrarAlerta('$error_message');</script>";
+            echo "<p style='color: red;'>$error_message</p>";
         }
 
         // Formulario para agregar nuevos datos
